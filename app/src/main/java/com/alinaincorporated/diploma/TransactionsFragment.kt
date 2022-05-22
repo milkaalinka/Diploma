@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.alinaincorporated.diploma
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

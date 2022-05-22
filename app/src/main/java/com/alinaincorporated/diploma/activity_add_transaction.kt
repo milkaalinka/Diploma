@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.alinaincorporated.diploma
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
