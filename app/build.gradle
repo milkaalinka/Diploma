@@ -44,6 +44,9 @@ android {
 dependencies {
     def nav_version = "2.4.2"
 
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt"
+
     implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.3.3"
 
     coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
