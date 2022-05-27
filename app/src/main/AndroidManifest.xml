@@ -13,9 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
-        <activity
-            android:name="com.alinaincorporated.diploma.activity_add_transaction"
-            android:exported="false" />
+
         <activity
             android:name="com.alinaincorporated.diploma.MainActivity"
             android:exported="true">
