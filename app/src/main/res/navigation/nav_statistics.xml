@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_statistics"
+    app:startDestination="@id/screen_statistics">
+
+    <fragment
+        android:id="@+id/screen_statistics"
+        android:name="com.alinaincorporated.diploma.StatisticsFragment"
+        android:label="@string/title_transactions"
+        tools:layout="@layout/fragment_statistics" />
+
+</navigation>

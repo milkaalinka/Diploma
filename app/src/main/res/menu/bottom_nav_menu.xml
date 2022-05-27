@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/transactions_nav"
-        android:title="Transactions"
-        android:icon="@drawable/ic_arrows_transaction_svg_icon"/>
+        android:id="@id/nav_transactions"
+        android:title="@string/tab_transactions"
+        android:icon="@drawable/ic_arrows_transaction_svg_icon" />
     <item
-        android:id="@+id/statistic_nav"
-        android:title="Statistic"
-        android:icon="@drawable/ic_analytics_chart_pie_statistics_svg_icon"/>
+        android:id="@id/nav_statistics"
+        android:title="@string/tab_statistics"
+        android:icon="@drawable/ic_analytics_chart_pie_statistics_svg_icon" />
 
 </menu>

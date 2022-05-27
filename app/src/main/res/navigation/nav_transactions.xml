@@ -2,23 +2,23 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_app"
-    app:startDestination="@id/screenTransactions">
+    android:id="@+id/nav_transactions"
+    app:startDestination="@id/screen_transactions">
 
     <fragment
-        android:id="@+id/screenTransactions"
+        android:id="@+id/screen_transactions"
         android:name="com.alinaincorporated.diploma.TransactionsFragment"
         android:label="@string/title_transactions"
         tools:layout="@layout/fragment_transactions">
 
         <action
             android:id="@+id/actionOpenAddTransaction"
-            app:destination="@+id/screenAddTransaction" />
+            app:destination="@id/screen_add_transaction" />
 
     </fragment>
 
     <fragment
-        android:id="@+id/screenAddTransaction"
+        android:id="@+id/screen_add_transaction"
         android:name="com.alinaincorporated.diploma.AddTransactionFragment"
         android:label="@string/title_new_transaction"
         tools:layout="@layout/fragment_add_transaction" />
