@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 import kotlinx.datetime.Instant
 
 @Entity(tableName = "transaction")
-class TransactionEntity(
+data class TransactionEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "transaction_id") val id: Int = 0,
     @ColumnInfo(name = "transaction_amount") val amount: Float,
