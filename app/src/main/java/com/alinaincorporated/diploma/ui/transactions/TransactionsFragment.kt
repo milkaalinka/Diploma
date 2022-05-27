@@ -1,10 +1,11 @@
-package com.alinaincorporated.diploma
+package com.alinaincorporated.diploma.ui.transactions
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.alinaincorporated.diploma.R
 import com.alinaincorporated.diploma.databinding.FragmentTransactionsBinding
 
 class TransactionsFragment : Fragment(R.layout.fragment_transactions) {

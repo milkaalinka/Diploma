@@ -1,9 +1,10 @@
-package com.alinaincorporated.diploma
+package com.alinaincorporated.diploma.ui.add_transaction
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.alinaincorporated.diploma.R
 import com.alinaincorporated.diploma.databinding.FragmentAddTransactionBinding
 
 class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {

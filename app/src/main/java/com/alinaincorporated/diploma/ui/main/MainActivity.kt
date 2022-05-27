@@ -1,4 +1,4 @@
-package com.alinaincorporated.diploma
+package com.alinaincorporated.diploma.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.alinaincorporated.diploma.R
 import com.alinaincorporated.diploma.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
