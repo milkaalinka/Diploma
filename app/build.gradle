@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'com.google.devtools.ksp'
     id 'androidx.navigation.safeargs.kotlin'
 }
 
@@ -39,12 +40,18 @@ android {
         disable += "VectorRaster"
         disable += "VectorPath"
     }
+    applicationVariants.all { variant ->
+        variant.sourceSets.java.each {
+            it.srcDirs += "build/generated/ksp/${variant.name}/kotlin"
+        }
+    }
 }
 
 dependencies {
     def nav_version = "2.4.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+    implementation 'com.google.devtools.ksp:symbol-processing-api:1.6.21-1.0.5'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1-native-mt"
 
     implementation "org.jetbrains.kotlinx:kotlinx-datetime:0.3.3"
