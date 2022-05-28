@@ -2,6 +2,7 @@ package com.alinaincorporated.diploma.ui.add_transaction
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -29,6 +30,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         test()
     }
 
+
     private fun test() {
         lifecycleScope.launch(Dispatchers.IO) {
             val transaction = TransactionEntity(
@@ -44,9 +46,9 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
             val transactionsText = transactions.joinToString(separator = "\n") { it.toString() }
 
-            withContext(Dispatchers.Main) {
+            /*withContext(Dispatchers.Main) {
                 binding.textTest.text = transactionsText
-            }
+            */
         }
     }
 }
