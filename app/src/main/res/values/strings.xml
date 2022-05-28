@@ -8,5 +8,8 @@
     <string name="title_new_transaction">New transaction</string>
     <string name="title_statistics">Statistics</string>
 
-
+    <string-array name="transactionTypes">
+        <item name="Income"></item>
+        <item name="Expense"></item>
+    </string-array>
 </resources>
