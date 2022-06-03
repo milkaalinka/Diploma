@@ -33,8 +33,17 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         binding.autoCompleteTextViewTransactionType.setAdapter(arrayAdapter)
 
         val incomeCategories = resources.getStringArray(R.array.incomeCategories)
-        val  arrayAdapterIncome = ArrayAdapter(requireContext(),R.layout.dropdown_type_items, incomeCategories)
+        val arrayAdapterIncome = ArrayAdapter(requireContext(),R.layout.dropdown_type_items, incomeCategories)
+        val expensesCategories = resources.getStringArray(R.array.expenseCategories)
+        val arrayAdapterExpense = ArrayAdapter(requireContext(),R.layout.dropdown_type_items, expensesCategories)
+
+        if(transactionType.equals("Income")) {
         binding.textViewCategories.setAdapter(arrayAdapterIncome)
+        }
+        else {
+            binding.textViewCategories.setAdapter(arrayAdapterExpense)
+        }
+
 
     }
 
