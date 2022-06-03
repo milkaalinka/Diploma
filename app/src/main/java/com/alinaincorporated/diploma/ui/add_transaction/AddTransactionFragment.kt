@@ -3,8 +3,10 @@ package com.alinaincorporated.diploma.ui.add_transaction
 import android.os.Bundle
 import android.view.View
 import android.widget.ArrayAdapter
+import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.alinaincorporated.diploma.R
 import com.alinaincorporated.diploma.database.TransactionDao
@@ -15,11 +17,10 @@ import com.alinaincorporated.diploma.ui.utils.input_filter.CurrencyInputFilter
 import com.alinaincorporated.diploma.ui.utils.input_filter.setupForCurrencyInput
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.datetime.Clock
+import kotlinx.coroutines.withContext
 import org.koin.android.ext.android.inject
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.random.Random
 
 class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
@@ -38,8 +39,8 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
     private var categoryMapper: TransactionCategoryMapper? = null
 
+    private var isExpense: Boolean = true
     private var selectedDateTime: Long? = null
-    private var amount: String = ""
     private var selectedCategoryId: Int? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,20 +59,31 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
         amountInput.filters += CurrencyInputFilter()
         amountInput.setupForCurrencyInput {
-            amount = it
+            amountLayout.error = null
         }
 
         dateInput.setOnClickListener {
             openDatePicker()
         }
+        dateInput.doAfterTextChanged {
+            dateLayout.error = null
+        }
 
         initCategoriesPicker()
+        categoryInput.doAfterTextChanged {
+            categoryLayout.error = null
+        }
+
+        saveButton.setOnClickListener {
+            validateAndSave()
+        }
     }
 
     private fun initTransactionTypePicker() = with(binding) {
         transactionTypeInput.setOnItemClickListener { _, _, position, _ ->
-            val isIncome = position == 0
-            initCategoriesViewAdapter(isIncome)
+            val isExpense = position == 1
+            this@AddTransactionFragment.isExpense = isExpense
+            initCategoriesViewAdapter(isExpense)
         }
         initTransactionTypeViewAdapter()
 
@@ -91,13 +103,13 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
             val categoryText = categoryInput.adapter.getItem(position) as String
             selectedCategoryId = categoryMapper?.mapToId(categoryText)
         }
-        initCategoriesViewAdapter(isIncome = false)
+        initCategoriesViewAdapter(isExpense = false)
     }
 
-    private fun initCategoriesViewAdapter(isIncome: Boolean) = with(binding) {
+    private fun initCategoriesViewAdapter(isExpense: Boolean) = with(binding) {
         val categoriesArrayRes =
-            if (isIncome) R.array.incomeCategories
-            else R.array.expenseCategories
+            if (isExpense) R.array.expenseCategories
+            else R.array.incomeCategories
         val categories = resources.getStringArray(categoriesArrayRes)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, categories)
         categoryInput.setAdapter(arrayAdapter)
@@ -131,25 +143,65 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         return format.format(Date(millis))
     }
 
-    private fun test() {
+    private fun validateAndSave() {
+        val amountRaw = binding.amountInput.text.toString()
+        val description = binding.descriptionInput.text.toString()
+
+        var isValid = true
+
+        val dateTime = selectedDateTime
+        if (dateTime == null) {
+            isValid = false
+            binding.dateLayout.error = getString(R.string.error_add_transaction_empty_date_time)
+        }
+
+        val amount = amountRaw.toFloatOrNull()
+        if (amount == null) {
+            isValid = false
+            binding.amountLayout.error = getString(R.string.error_add_transaction_invalid_amount)
+        }
+        if (amount != null && amount < 0.01) {
+            isValid = false
+            binding.amountLayout.error = getString(R.string.error_add_transaction_amount_zero)
+        }
+
+        val categoryId = selectedCategoryId
+        if (categoryId == null) {
+            isValid = false
+            binding.categoryLayout.error = getString(R.string.error_add_transaction_empty_category)
+        }
+
+        if (!isValid) return
+
+        save(
+            isExpense = isExpense,
+            dateTime = dateTime!!,
+            amount = amount!!,
+            description = description.trim().takeIf { it.isNotEmpty() },
+            categoryId = categoryId!!,
+        )
+    }
+
+    private fun save(
+        isExpense: Boolean,
+        dateTime: Long,
+        amount: Float,
+        description: String?,
+        categoryId: Int,
+    ) {
         lifecycleScope.launch(Dispatchers.IO) {
             val transaction = TransactionEntity(
-                amount = Random.nextFloat() * 100 + 1,
-                description = "",
-                dateTime = Clock.System.now(),
-                categoryId = Random.nextInt(1, 10),
-                isIncome = Random.nextBoolean(),
+                amount = amount,
+                description = description,
+                dateTime = dateTime,
+                categoryId = categoryId,
+                isExpense = isExpense,
             )
             transactionDao.insert(transaction)
 
-            val transactions = transactionDao.getAll()
-
-            val transactionsText = transactions.joinToString(separator = "\n") { it.toString() }
-
-            /*withContext(Dispatchers.Main) {
-                binding.textTest.text = transactionsText
-            */
+            withContext(Dispatchers.Main) {
+                findNavController().navigateUp()
+            }
         }
     }
 }
-

@@ -5,7 +5,7 @@ import android.widget.EditText
 import androidx.core.widget.doAfterTextChanged
 
 fun EditText.setupForCurrencyInput(
-    onChanged: (String) -> Unit,
+    onChanged: ((String) -> Unit)? = null,
 ): TextWatcher {
     return doAfterTextChanged { editable ->
         val initialText = editable.toString()
@@ -26,7 +26,7 @@ fun EditText.setupForCurrencyInput(
             setText(checkedText)
             setSelection(length())
         } else {
-            onChanged.invoke(initialText)
+            onChanged?.invoke(initialText)
         }
     }
 }

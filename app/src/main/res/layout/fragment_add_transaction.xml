@@ -11,7 +11,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/DropdownInput"
-        android:id="@+id/transactionTypeMenu"
+        android:id="@+id/transactionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_transaction_type"
@@ -27,10 +27,10 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/InputLayout"
-        android:id="@+id/dateField"
+        android:id="@+id/dateLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_date"
+        android:hint="@string/hint_date_time"
         app:errorEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -45,7 +45,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/InputLayout"
-        android:id="@+id/amountField"
+        android:id="@+id/amountLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_amount"
@@ -61,7 +61,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/InputLayout"
-        android:id="@+id/descriptionField"
+        android:id="@+id/descriptionLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_description"
@@ -71,13 +71,14 @@
             android:id="@+id/descriptionInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text|textCapSentences" />
+            android:inputType="text|textCapSentences"
+            android:maxLength="@integer/description_max_length" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/DropdownInput"
-        android:id="@+id/categoryMenu"
+        android:id="@+id/categoryLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_category"
@@ -93,7 +94,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/saveTransactionBtn"
+        android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingVertical="12dp"

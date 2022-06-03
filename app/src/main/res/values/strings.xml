@@ -9,13 +9,18 @@
     <string name="title_statistics">Statistics</string>
 
     <string name="hint_transaction_type">Transaction type</string>
-    <string name="hint_date">Date</string>
+    <string name="hint_date_time">Date and time</string>
     <string name="hint_amount">Amount</string>
     <string name="hint_description">Description</string>
     <string name="hint_category">Category</string>
     <string name="button_save">Save</string>
     <string name="title_add_transaction_date_picker">Select transaction date</string>
     <string name="title_add_transaction_time_picker">Select transaction time</string>
+
+    <string name="error_add_transaction_empty_date_time">Select date and time</string>
+    <string name="error_add_transaction_empty_category">Select category</string>
+    <string name="error_add_transaction_invalid_amount">Invalid amount format</string>
+    <string name="error_add_transaction_amount_zero">Please enter amount > 0</string>
 
     <string-array name="transactionTypes">
         <item name="income">Income</item>
