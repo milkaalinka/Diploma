@@ -12,7 +12,6 @@ import com.alinaincorporated.diploma.database.TransactionEntity
 import com.alinaincorporated.diploma.databinding.FragmentAddTransactionBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import kotlinx.datetime.Clock
 import org.koin.android.ext.android.inject
 import kotlin.random.Random
@@ -28,6 +27,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         test()
+
         val transactionType = resources.getStringArray(R.array.transactionTypes)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, transactionType)
         binding.autoCompleteTextViewTransactionType.setAdapter(arrayAdapter)
