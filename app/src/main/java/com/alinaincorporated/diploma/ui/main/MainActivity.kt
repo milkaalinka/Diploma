@@ -25,7 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun initNavigationUI() {
         val navController = findNavControllerInNavHost()
-        val appBarConfiguration = AppBarConfiguration(binding.bottomNavigation.menu)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(R.id.screen_transactions, R.id.screen_statistics)
+        )
         binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         binding.bottomNavigation.setupWithNavController(navController)
     }
