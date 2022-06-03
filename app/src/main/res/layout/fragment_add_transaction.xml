@@ -18,7 +18,7 @@
         app:errorEnabled="true">
 
         <AutoCompleteTextView
-            android:id="@+id/autoCompleteTextViewTransactionType"
+            android:id="@+id/transactionTypeInput"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="none" />
@@ -85,7 +85,7 @@
         app:errorEnabled="true">
 
         <AutoCompleteTextView
-            android:id="@+id/textViewCategories"
+            android:id="@+id/categoryInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />

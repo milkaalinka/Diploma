@@ -44,8 +44,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
     }
 
     private fun initViews() = with(binding) {
-        initTransactionTypeViewAdapter()
-        initCategoriesViewAdapter()
+        initTransactionTypePicker()
 
         amountInput.filters += CurrencyInputFilter()
         amountInput.setupForCurrencyInput {
@@ -57,18 +56,33 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         }
     }
 
-    private fun initTransactionTypeViewAdapter() {
-        val transactionType = resources.getStringArray(R.array.transactionTypes)
-        val arrayAdapter =
-            ArrayAdapter(requireContext(), R.layout.dropdown_type_items, transactionType)
-        binding.autoCompleteTextViewTransactionType.setAdapter(arrayAdapter)
+    private fun initTransactionTypePicker() = with(binding) {
+        transactionTypeInput.setOnItemClickListener { _, _, position, _ ->
+            val isIncome = position == 0
+            initCategoriesViewAdapter(isIncome)
+        }
+        initTransactionTypeViewAdapter()
+
+        // Set expense by default
+        val expenseText = transactionTypeInput.adapter.getItem(1).toString()
+        transactionTypeInput.setText(expenseText, false)
+        initCategoriesViewAdapter(isIncome = false)
     }
 
-    private fun initCategoriesViewAdapter() {
-        val incomeCategories = resources.getStringArray(R.array.incomeCategories)
-        val arrayAdapterIncome =
-            ArrayAdapter(requireContext(), R.layout.dropdown_type_items, incomeCategories)
-        binding.textViewCategories.setAdapter(arrayAdapterIncome)
+    private fun initTransactionTypeViewAdapter() = with(binding) {
+        val transactionType = resources.getStringArray(R.array.transactionTypes)
+        val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, transactionType)
+        transactionTypeInput.setAdapter(adapter)
+
+    }
+
+    private fun initCategoriesViewAdapter(isIncome: Boolean) = with(binding) {
+        val categoriesArrayRes =
+            if (isIncome) R.array.incomeCategories
+            else R.array.expenseCategories
+        val categories = resources.getStringArray(categoriesArrayRes)
+        val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, categories)
+        categoryInput.setAdapter(arrayAdapter)
     }
 
     private fun openDatePicker() {
