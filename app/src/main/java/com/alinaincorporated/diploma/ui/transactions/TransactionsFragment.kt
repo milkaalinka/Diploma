@@ -17,6 +17,7 @@ class TransactionsFragment : Fragment(R.layout.fragment_transactions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
+        binding.textBalance.text = getString(R.string.title_balance, "$10.20")
     }
 
     private fun initViews() = with(binding) {

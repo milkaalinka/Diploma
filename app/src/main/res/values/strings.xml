@@ -8,6 +8,8 @@
     <string name="title_new_transaction">New transaction</string>
     <string name="title_statistics">Statistics</string>
 
+    <string name="title_balance">Balance: %s</string>
+
     <string name="hint_transaction_type">Transaction type</string>
     <string name="hint_date_time">Date and time</string>
     <string name="hint_amount">Amount</string>
