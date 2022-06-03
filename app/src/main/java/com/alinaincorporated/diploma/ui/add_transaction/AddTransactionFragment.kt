@@ -10,9 +10,9 @@ import com.alinaincorporated.diploma.R
 import com.alinaincorporated.diploma.database.TransactionDao
 import com.alinaincorporated.diploma.database.TransactionEntity
 import com.alinaincorporated.diploma.databinding.FragmentAddTransactionBinding
+import com.alinaincorporated.diploma.ui.transactions.TransactionCategoryMapper
 import com.alinaincorporated.diploma.ui.utils.input_filter.CurrencyInputFilter
 import com.alinaincorporated.diploma.ui.utils.input_filter.setupForCurrencyInput
-import com.google.android.material.datepicker.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
@@ -24,9 +24,10 @@ import kotlin.random.Random
 class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
     companion object {
-        private const val DATE_FORMAT = "dd/MM/yyyy"
+        private const val DATE_FORMAT = "dd/MM/yyyy HH:mm"
 
         private const val TAG_DATE_PICKER = "date_picker"
+        private const val TAG_TIME_PICKER = "time_picker"
     }
 
     private val transactionDao: TransactionDao by inject()
@@ -35,12 +36,21 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         FragmentAddTransactionBinding::bind
     )
 
-    private var selectedDate: Long? = null
+    private var categoryMapper: TransactionCategoryMapper? = null
+
+    private var selectedDateTime: Long? = null
     private var amount: String = ""
+    private var selectedCategoryId: Int? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        categoryMapper = TransactionCategoryMapper(resources)
         initViews()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        categoryMapper = null
     }
 
     private fun initViews() = with(binding) {
@@ -54,6 +64,8 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         dateInput.setOnClickListener {
             openDatePicker()
         }
+
+        initCategoriesPicker()
     }
 
     private fun initTransactionTypePicker() = with(binding) {
@@ -66,14 +78,20 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
         // Set expense by default
         val expenseText = transactionTypeInput.adapter.getItem(1).toString()
         transactionTypeInput.setText(expenseText, false)
-        initCategoriesViewAdapter(isIncome = false)
     }
 
     private fun initTransactionTypeViewAdapter() = with(binding) {
         val transactionType = resources.getStringArray(R.array.transactionTypes)
         val adapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, transactionType)
         transactionTypeInput.setAdapter(adapter)
+    }
 
+    private fun initCategoriesPicker() = with(binding) {
+        categoryInput.setOnItemClickListener { _, _, position, _ ->
+            val categoryText = transactionTypeInput.adapter.getItem(position) as String
+            selectedCategoryId = categoryMapper?.mapToId(categoryText)
+        }
+        initCategoriesViewAdapter(isIncome = false)
     }
 
     private fun initCategoriesViewAdapter(isIncome: Boolean) = with(binding) {
@@ -86,54 +104,31 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
     }
 
     private fun openDatePicker() {
-        val picker = MaterialDatePicker.Builder.datePicker()
-            .setTitleText(R.string.title_add_transaction_date_picker)
-            .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-            .setCalendarConstraints(createDatePickerConstraints())
-            .build()
-
+        val picker = AddTransactionDatePickerHelper.createPicker()
         picker.addOnPositiveButtonClickListener {
-            selectedDate = it
-            binding.dateInput.setText(formatDate(it))
+            selectedDateTime = it
+            openTimePicker()
         }
-
         picker.show(childFragmentManager, TAG_DATE_PICKER)
     }
 
-    private fun createDatePickerConstraints(): CalendarConstraints {
-        val today = MaterialDatePicker.todayInUtcMilliseconds()
-        val calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
-        calendar.timeInMillis = today
-        setCalendarAtStartOfDay(calendar)
-        val max = calendar.timeInMillis
+    private fun openTimePicker() {
+        val picker = AddTransactionTimePickerHelper.createPicker()
+        picker.addOnPositiveButtonClickListener {
+            val selectedDate = selectedDateTime ?: return@addOnPositiveButtonClickListener
+            val dateTime = AddTransactionTimePickerHelper.withDate(picker, selectedDate)
+            selectedDateTime = dateTime
 
-        calendar.add(Calendar.MONTH, -1)
-        val min = calendar.timeInMillis
-
-        val validator = CompositeDateValidator.allOf(
-            listOf(
-                DateValidatorPointForward.from(min),
-                DateValidatorPointBackward.before(max),
-            )
-        )
-
-        return CalendarConstraints.Builder()
-            .setStart(min)
-            .setEnd(max)
-            .setValidator(validator)
-            .build()
-    }
-
-    private fun setCalendarAtStartOfDay(calendar: Calendar) {
-        calendar[Calendar.MILLISECOND] = 0
-        calendar[Calendar.SECOND] = 0
-        calendar[Calendar.MINUTE] = 0
-        calendar[Calendar.HOUR] = 0
+            binding.dateInput.setText(formatDate(dateTime))
+        }
+        picker.show(childFragmentManager, TAG_TIME_PICKER)
     }
 
     private fun formatDate(millis: Long): String {
-        val date = Date(millis)
-        return SimpleDateFormat(DATE_FORMAT, Locale.ROOT).format(date)
+        val format = SimpleDateFormat(DATE_FORMAT, Locale.ROOT).apply {
+            timeZone = TimeZone.getTimeZone("UTC")
+        }
+        return format.format(Date(millis))
     }
 
     private fun test() {

@@ -15,6 +15,7 @@
     <string name="hint_category">Category</string>
     <string name="button_save">Save</string>
     <string name="title_add_transaction_date_picker">Select transaction date</string>
+    <string name="title_add_transaction_time_picker">Select transaction time</string>
 
     <string-array name="transactionTypes">
         <item name="income">Income</item>
@@ -22,20 +23,33 @@
     </string-array>
 
     <string-array name="incomeCategories">
-        <item name="salary">Salary</item>
-        <item name="pension">Pension</item>
-        <item name="scolarship">Scolarship</item>
-        <item name="bonus">Bonus</item>
+        <item name="salary">@string/category_income_salary</item>
+        <item name="pension">@string/category_income_pension</item>
+        <item name="scolarship">@string/category_income_scolarship</item>
+        <item name="bonus">@string/category_income_bonus</item>
     </string-array>
 
     <string-array name="expenseCategories">
-        <item name="food">Food</item>
-        <item name="home">Home</item>
-        <item name="entertainment">Entertainment</item>
-        <item name="gifts">Gifts</item>
-        <item name="health">Health</item>
-        <item name="clothing">Clothing</item>
-        <item name="education">Education</item>
-        <item name="others">Others</item>
+        <item name="food">@string/category_expense_food</item>
+        <item name="home">@string/category_expense_home</item>
+        <item name="entertainment">@string/category_expense_entertainment</item>
+        <item name="gifts">@string/category_expense_gifts</item>
+        <item name="health">@string/category_expense_health</item>
+        <item name="clothing">@string/category_expense_clothing</item>
+        <item name="education">@string/category_expense_education</item>
+        <item name="others">@string/category_expense_other</item>
     </string-array>
+
+    <string name="category_income_salary">Salary</string>
+    <string name="category_income_pension">Pension</string>
+    <string name="category_income_scolarship">Scolarship</string>
+    <string name="category_income_bonus">Bonus</string>
+    <string name="category_expense_food">Food</string>
+    <string name="category_expense_home">Home</string>
+    <string name="category_expense_entertainment">Entertainment</string>
+    <string name="category_expense_gifts">Gifts</string>
+    <string name="category_expense_health">Health</string>
+    <string name="category_expense_clothing">Clothing</string>
+    <string name="category_expense_education">Education</string>
+    <string name="category_expense_other">Other</string>
 </resources>
