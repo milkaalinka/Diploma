@@ -12,5 +12,20 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="android:editTextStyle">
+            @style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Custom
+        </item>
+        <item name="android:autoCompleteTextViewStyle">
+            @style/Widget.MaterialComponents.AutoCompleteTextView.OutlinedBox.Custom
+        </item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputEditText.OutlinedBox.Custom">
+        <item name="android:textColor">@color/text</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.AutoCompleteTextView.OutlinedBox.Custom">
+        <item name="android:textColor">@color/text</item>
     </style>
 </resources>
