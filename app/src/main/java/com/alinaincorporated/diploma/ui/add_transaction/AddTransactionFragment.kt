@@ -88,7 +88,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
     private fun initCategoriesPicker() = with(binding) {
         categoryInput.setOnItemClickListener { _, _, position, _ ->
-            val categoryText = transactionTypeInput.adapter.getItem(position) as String
+            val categoryText = categoryInput.adapter.getItem(position) as String
             selectedCategoryId = categoryMapper?.mapToId(categoryText)
         }
         initCategoriesViewAdapter(isIncome = false)
