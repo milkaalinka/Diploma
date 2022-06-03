@@ -12,4 +12,22 @@
         <item name="income">Income</item>
         <item name="expense">Expense</item>
     </string-array>
+
+    <string-array name="incomeCategories">
+        <item name="salary">Salary</item>
+        <item name="pension">Pension</item>
+        <item name="scolarship">Scolarship</item>
+        <item name="bonus">Bonus</item>
+    </string-array>
+
+    <string-array name="expenseCategories">
+        <item name="food">Food</item>
+        <item name="home">Home</item>
+        <item name="entertainment">Entertainment</item>
+        <item name="gifts">Gifts</item>
+        <item name="health">Health</item>
+        <item name="clothing">Clothing</item>
+        <item name="education">Education</item>
+        <item name="others">Others</item>
+    </string-array>
 </resources>

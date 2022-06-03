@@ -26,11 +26,16 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        test()
+        //test()
 
         val transactionType = resources.getStringArray(R.array.transactionTypes)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_type_items, transactionType)
         binding.autoCompleteTextViewTransactionType.setAdapter(arrayAdapter)
+
+        val incomeCategories = resources.getStringArray(R.array.incomeCategories)
+        val  arrayAdapterIncome = ArrayAdapter(requireContext(),R.layout.dropdown_type_items, incomeCategories)
+        binding.textViewCategories.setAdapter(arrayAdapterIncome)
+
     }
 
 

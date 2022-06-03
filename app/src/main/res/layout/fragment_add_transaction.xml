@@ -33,13 +33,14 @@
         android:id="@+id/dateField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="150dp"
         android:hint="Date"
-        app:layout_constraintVertical_bias="0.1"
         app:errorEnabled="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/transactionTypeMenu"
-        app:layout_constraintTop_toBottomOf = "@id/categoryMenu"
-        app:layout_constraintStart_toStartOf="@+id/transactionTypeMenu">
+        app:layout_constraintStart_toStartOf="@+id/transactionTypeMenu"
+        app:layout_constraintTop_toBottomOf="@id/categoryMenu"
+        app:layout_constraintVertical_bias="0.1">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -103,6 +104,7 @@
         app:errorEnabled="true">
 
         <AutoCompleteTextView
+            android:id = "@+id/textViewCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="none" />
