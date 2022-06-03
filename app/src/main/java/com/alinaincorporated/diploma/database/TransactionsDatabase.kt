@@ -4,14 +4,10 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import androidx.room.TypeConverters
 
 @Database(
     entities = [TransactionEntity::class],
     version = 1,
-)
-@TypeConverters(
-    value = [DatabaseTimeConverter::class]
 )
 abstract class TransactionsDatabase : RoomDatabase() {
 
@@ -22,9 +18,7 @@ abstract class TransactionsDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 context,
                 TransactionsDatabase::class.java, "transactions_database"
-            )
-                .addTypeConverter(DatabaseTimeConverter())
-                .build()
+            ).build()
         }
     }
 }
