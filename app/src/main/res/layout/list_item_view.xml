@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="85dp"
+    android:paddingTop="8dp"
+    android:paddingBottom="8dp"
+    android:paddingStart="16dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+    
+    <TextView
+        android:id="@+id/transactTextName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        tools:text="Category"
+        tools:textSize="18sp">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/transactDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        tools:text="04/06/22">
+
+    </TextView>
+
+    <TextView
+        android:id="@+id/transactAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:layout_marginTop="2dp"
+        tools:text="-$ 5"
+        tools:textSize="18sp"
+        tools:textStyle="bold">
+
+    </TextView>
+
+</LinearLayout>

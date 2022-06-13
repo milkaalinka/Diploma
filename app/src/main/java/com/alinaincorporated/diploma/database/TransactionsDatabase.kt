@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [TransactionEntity::class],
-    version = 1,
+    version = 3,
 )
 abstract class TransactionsDatabase : RoomDatabase() {
 
@@ -18,7 +18,8 @@ abstract class TransactionsDatabase : RoomDatabase() {
             return Room.databaseBuilder(
                 context,
                 TransactionsDatabase::class.java, "transactions_database"
-            ).build()
+            )   .fallbackToDestructiveMigration()
+                .build()
         }
     }
 }

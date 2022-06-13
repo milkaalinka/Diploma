@@ -13,6 +13,7 @@ import com.alinaincorporated.diploma.database.TransactionDao
 import com.alinaincorporated.diploma.database.TransactionEntity
 import com.alinaincorporated.diploma.databinding.FragmentAddTransactionBinding
 import com.alinaincorporated.diploma.ui.transactions.TransactionCategoryMapper
+import com.alinaincorporated.diploma.ui.transactions.TransactionsFragmentDirections
 import com.alinaincorporated.diploma.ui.utils.input_filter.CurrencyInputFilter
 import com.alinaincorporated.diploma.ui.utils.input_filter.setupForCurrencyInput
 import kotlinx.coroutines.Dispatchers
