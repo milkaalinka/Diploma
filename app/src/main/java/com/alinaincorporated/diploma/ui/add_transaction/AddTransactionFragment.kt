@@ -13,7 +13,6 @@ import com.alinaincorporated.diploma.database.TransactionDao
 import com.alinaincorporated.diploma.database.TransactionEntity
 import com.alinaincorporated.diploma.databinding.FragmentAddTransactionBinding
 import com.alinaincorporated.diploma.ui.transactions.TransactionCategoryMapper
-import com.alinaincorporated.diploma.ui.transactions.TransactionsFragmentDirections
 import com.alinaincorporated.diploma.ui.utils.input_filter.CurrencyInputFilter
 import com.alinaincorporated.diploma.ui.utils.input_filter.setupForCurrencyInput
 import kotlinx.coroutines.Dispatchers
@@ -43,6 +42,7 @@ class AddTransactionFragment : Fragment(R.layout.fragment_add_transaction) {
     private var isExpense: Boolean = true
     private var selectedDateTime: Long? = null
     private var selectedCategoryId: Int? = null
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
