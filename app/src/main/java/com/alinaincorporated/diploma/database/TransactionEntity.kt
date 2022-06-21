@@ -13,4 +13,8 @@ data class TransactionEntity(
     @ColumnInfo(name = "transaction_datetime") val dateTime: Long,
     @ColumnInfo(name = "category_id") val categoryId: Int,
     @ColumnInfo(name = "is_expense") val isExpense: Boolean,
-)
+) {
+
+    val absAmount: Float
+        get() = if (isExpense) -amount else amount
+}

@@ -3,43 +3,56 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="85dp"
-    android:paddingTop="8dp"
-    android:paddingBottom="8dp"
-    android:paddingStart="16dp"
+    android:layout_height="wrap_content"
+    android:paddingVertical="8dp"
+    android:paddingHorizontal="16dp"
     android:gravity="center_vertical"
     android:orientation="horizontal">
-    
-    <TextView
-        android:id="@+id/transactTextName"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="12dp"
-        tools:text="Category"
-        tools:textSize="18sp">
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_marginEnd="16dp">
 
-    </TextView>
+        <TextView
+            android:id="@+id/transactTextName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="?colorPrimary"
+            android:textSize="18sp"
+            tools:text="Category" />
 
-    <TextView
-        android:id="@+id/transactDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        tools:text="04/06/22">
+        <TextView
+            android:id="@+id/transactDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            tools:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." />
 
-    </TextView>
+        <TextView
+            android:id="@+id/transactDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="sans-serif-light"
+            android:textColor="@color/text"
+            android:textSize="14sp"
+            tools:text="04/06/22" />
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/transactAmount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="200dp"
-        android:layout_marginTop="2dp"
-        tools:text="-$ 5"
-        tools:textSize="18sp"
-        tools:textStyle="bold">
-
-    </TextView>
+        android:textColor="?colorPrimary"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:text="-$5"
+        tools:textColor="@color/expense" />
 
 </LinearLayout>

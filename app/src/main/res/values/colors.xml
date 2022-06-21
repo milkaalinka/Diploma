@@ -11,4 +11,7 @@
     <color name="text">#121212</color>
 
     <color name="grey_300">#E5E5E5</color>
+
+    <color name="income">#27AE4D</color>
+    <color name="expense">#CF235F</color>
 </resources>
