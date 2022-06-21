@@ -55,7 +55,7 @@ class StatisticsFragment : Fragment(R.layout.fragment_statistics) {
         description.text = ""
         centerText = getString(titleRes)
         setCenterTextSize(18f)
-        setCenterTextColor(ContextCompat.getColor(requireContext(), R.color.teal_700))
+        setCenterTextColor(ContextCompat.getColor(requireContext(), R.color.orange_700))
         setCenterTextTypeface(Typeface.DEFAULT_BOLD)
         setEntryLabelColor(Color.WHITE)
     }
