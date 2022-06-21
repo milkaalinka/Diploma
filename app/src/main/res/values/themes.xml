@@ -20,6 +20,12 @@
         </item>
     </style>
 
+    <style name="Theme.MyApplication.Splash" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.MyApplication</item>
+    </style>
+
     <style name="Widget.MaterialComponents.TextInputEditText.OutlinedBox.Custom">
         <item name="android:textColor">@color/text</item>
         <item name="android:textColorHint">@color/white</item>
