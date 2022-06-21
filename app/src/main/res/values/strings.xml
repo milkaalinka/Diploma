@@ -59,4 +59,10 @@
     <string name="category_expense_clothing">Clothing</string>
     <string name="category_expense_education">Education</string>
     <string name="category_expense_other">Other</string>
+
+    <string name="title_statistics_overview">Overview</string>
+    <string name="title_statistics_income">Income:</string>
+    <string name="title_statistics_expense">Expense:</string>
+    <string name="title_statistics_total">Total:</string>
+    <string name="title_statistics_chart">Expense structure</string>
 </resources>

@@ -1,125 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:overScrollMode="ifContentScrolls"
     tools:context=".ui.statistics.StatisticsFragment">
 
-    <TextView
-        android:id="@+id/overviewTextView"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Overview"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/balanceTextView"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="565dp"
-        android:text="Income:\nExpenses:\nTotal:"
-        android:textSize="19sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overviewTextView"
-        app:layout_constraintVertical_bias="0.466" />
+        <TextView
+            android:id="@+id/overviewTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/title_statistics_overview"
+            android:textColor="?colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
 
-    <TextView
-        android:id="@+id/incomeTextView"
-        android:layout_width="178dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginBottom="565dp"
-        android:text="$ 1200"
-        android:textAlignment="viewEnd"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/balanceTextView"
-        app:layout_constraintTop_toTopOf="@+id/overviewTextView"
-        app:layout_constraintVertical_bias="0.466" />
+        <TextView
+            android:id="@+id/titleIncome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/title_statistics_income"
+            android:textColor="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@+id/overviewTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textIncome" />
 
-    <TextView
-        android:id="@+id/expensesTextView"
-        android:layout_width="178dp"
-        android:layout_height="23dp"
-        android:layout_marginBottom="577dp"
-        android:text="-$ 930"
-        android:textAlignment="viewEnd"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/balanceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/incomeTextView"
-        app:layout_constraintVertical_bias="0.466" />
+        <TextView
+            android:id="@+id/textIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/income"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/titleIncome"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="$1200" />
 
-    <TextView
-        android:id="@+id/totalTextView"
-        android:layout_width="178dp"
-        android:layout_height="23dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="565dp"
-        android:text="$ 270"
-        android:textAlignment="viewEnd"
-        android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/balanceTextView"
-        app:layout_constraintTop_toBottomOf="@+id/expensesTextView"
-        app:layout_constraintVertical_bias="0.466" />
+        <TextView
+            android:id="@+id/titleExpense"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/title_statistics_expense"
+            android:textColor="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/titleIncome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textExpense" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView"
-        android:layout_width="match_parent"
-        android:layout_height="500dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balanceTextView" />
+        <TextView
+            android:id="@+id/textExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="@color/expense"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/titleExpense"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="$600" />
 
-    <TextView
-        android:id="@+id/typesTextView"
-        android:layout_width="match_parent"
-        android:layout_height="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:text="Expense structure"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/balanceTextView"
-        tools:ignore="MissingConstraints" />
+        <TextView
+            android:id="@+id/titleTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:text="@string/title_statistics_total"
+            android:textColor="@color/text"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/titleExpense"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textTotal" />
 
-    <com.github.mikephil.charting.charts.PieChart
-        android:id="@+id/pieChart"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="32dp"
-        app:layout_constraintBottom_toBottomOf="@+id/fragmentContainerView"
-        app:layout_constraintEnd_toEndOf="@+id/fragmentContainerView"
-        app:layout_constraintStart_toStartOf="@+id/fragmentContainerView"
-        app:layout_constraintTop_toBottomOf="@+id/typesTextView"
-        />
+        <TextView
+            android:id="@+id/textTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:textColor="?colorPrimary"
+            android:textSize="18sp"
+            app:layout_constraintBaseline_toBaselineOf="@id/titleTotal"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="$600" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/titleTypes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="16dp"
+            android:text="@string/title_statistics_chart"
+            android:textColor="?colorPrimary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/titleTotal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/pieChart"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="48dp"
+            android:layout_marginVertical="16dp"
+            app:layout_constraintTop_toBottomOf="@id/titleTypes"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintDimensionRatio="1:1" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>
