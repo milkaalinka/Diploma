@@ -64,5 +64,7 @@
     <string name="title_statistics_income">Income:</string>
     <string name="title_statistics_expense">Expense:</string>
     <string name="title_statistics_total">Total:</string>
-    <string name="title_statistics_chart">Expense structure</string>
+    <string name="title_statistics_chart">Structure</string>
+    <string name="title_statistics_chart_income">Incomes</string>
+    <string name="title_statistics_chart_expense">Expenses</string>
 </resources>
