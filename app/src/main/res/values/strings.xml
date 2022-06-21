@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Money UA</string>
 
     <string name="tab_transactions">Transactions</string>
     <string name="tab_statistics">Statistics</string>
